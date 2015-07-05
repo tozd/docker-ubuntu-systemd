@@ -1,0 +1,21 @@
+# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+# newer versions of the distribution.
+
+deb http://de.archive.ubuntu.com/ubuntu/ vivid main restricted universe multiverse
+#deb-src http://de.archive.ubuntu.com/ubuntu/ vivid main restricted universe multiverse
+
+deb http://de.archive.ubuntu.com/ubuntu/ vivid-updates main restricted universe multiverse
+#deb-src http://de.archive.ubuntu.com/ubuntu/ vivid-updates main restricted universe multiverse
+
+deb http://de.archive.ubuntu.com/ubuntu/ vivid-security main restricted universe multiverse
+#deb-src http://de.archive.ubuntu.com/ubuntu/ vivid-security main restricted universe multiverse
+
+## Proposed updates
+#deb http://de.archive.ubuntu.com/ubuntu/ vivid-proposed main restricted universe multiverse
+#deb-src http://de.archive.ubuntu.com/ubuntu/ vivid-proposed main restricted universe multiverse
+
+## Backports
+#deb http://de.archive.ubuntu.com/ubuntu/ vivid-backports main restricted universe multiverse
+#deb-src http://de.archive.ubuntu.com/ubuntu/ vivid-backports main restricted universe multiverse
+
+## Custom
