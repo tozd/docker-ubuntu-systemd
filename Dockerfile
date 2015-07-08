@@ -76,13 +76,18 @@ RUN systemctl mask -- \
 RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
 
 # upgrade OS
-RUN apt-get update -q \
+RUN apt-get update -qq \
  && apt-get upgrade --yes --force-yes
 
 # system packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y \
     rsyslog \
-    systemd-cron
+    systemd \
+    systemd-cron \
+ \
+ && sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
+
+ADD etc/rsyslog.d/50-default.conf /etc/rsyslog.d/50-default.conf
 
 # mount read-only `cgroup name=systemd` (see `README`.md)
 VOLUME ["/sys/fs/cgroup"]
