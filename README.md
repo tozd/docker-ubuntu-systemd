@@ -18,7 +18,10 @@ To run *systemd* in an unprivileged container a few manual tweaks are currently 
 First it depends on the *cgroups* directory, at least it needs read-only access to `cgroup name=systemd` hierarchy (in `/sys/fs/cgroup/systemd`). Lets prepare **one for all** *ubuntu-systemd* containers:
 
 ```bash
-$ mkdir /tmp/cgroup /tmp/cgroup/systemd && mount --bind /sys/fs/cgroup/systemd /tmp/cgroup/systemd
+$ mkdir -p /tmp/cgroup/systemd && mount -t cgroup systemd /tmp/cgroup/systemd -o ro,noexec,nosuid,nodev,none,name=systemd
+
+# or alternatively:
+$ mkdir -p /tmp/cgroup/systemd && mount --bind /sys/fs/cgroup/systemd /tmp/cgroup/systemd
 ```
 
 Next it needs *tmpfs* mount points in `/run` and `/run/lock`. This needs to be prepared **separately for each** *ubuntu-systemd* container:
@@ -31,9 +34,9 @@ $ mkdir /tmp/run/lock && mount -t tmpfs tmpfs /tmp/run/lock
 You could also add all mount points permanently to your `/etc/fstab`:
 
 ```
-/sys/fs/cgroup/systemd  /tmp/cgroup/systemd  none  bind
-tmpfs  /tmp/run  tmpfs  nodev,nosuid,mode=755,size=65536k
-tmpfs  /tmp/run/lock  tmpfs  nodev,nosuid,mode=755,size=65536k
+systemd  /tmp/cgroup/systemd  cgroup  ro,noexec,nosuid,nodev,none,name=systemd  0  0
+tmpfs  /tmp/run  tmpfs  nodev,nosuid,mode=755,size=65536k  0  0
+tmpfs  /tmp/run/lock  tmpfs  nodev,nosuid,mode=755,size=65536k  0  0
 ```
 
 Then you are **ready to use** your *Docker* container:
@@ -64,7 +67,7 @@ All instructions from scratch are included in the `Dockerfile`. To build it you 
 
 ```bash
 $ git clone http://github.com/tozd/docker-ubuntu-systemd.git
-$ docker build -t ubuntu-systemd ./docker-ubuntu-systemd
+$ docker build -t tozd/ubuntu-systemd -t tozd/ubuntu-systemd:15.04.0 ./docker-ubuntu-systemd
 ```
 
 
