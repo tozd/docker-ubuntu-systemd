@@ -80,7 +80,8 @@ RUN apt-get update -qq \
  && apt-get upgrade --yes --force-yes
 
 # system packages
-RUN apt-get update -qq && apt-get install -y \
+RUN apt-get update -qq \
+ && apt-get install -y \
     rsyslog \
     systemd \
     systemd-cron \

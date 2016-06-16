@@ -1,13 +1,20 @@
 docker-ubuntu-systemd
 =====================
 
-***ubuntu-systemd*** is a minimal [*Ubuntu*](http://www.ubuntu.com/) system with *systemd* designed for running in unprivileged [*Docker*](http://www.docker.com/) containers. Main philosophy:
+***ubuntu-systemd*** is a minimal [*Docker*](http://www.docker.com/) image built from [*Ubuntu 15.04*](http://www.ubuntu.com/) with *systemd* designed for running in an unprivileged container. Main philosophy:
 
 - simple to use and maintain, same system management experience
 - transparent build process, unlike "official" *Ubuntu* images
 - treat containers as VMs, multiple processes inside a single container
 
-You can use it as a base for your own *Docker* images. Just pull it from [the *Docker registry*](http://registry.hub.docker.com/u/tozd/ubuntu-systemd/)!
+You can use it as a base for your own *Docker* images. Just pull it from [the *Docker hub*](http://hub.docker.com/r/tozd/ubuntu-systemd/).
+
+Open source project:
+
+- <i class="fa fa-fw fa-home"></i> home: <http://gw.tnode.com/docker/ubuntu-systemd/>
+- <i class="fa fa-fw fa-github-square"></i> github: <http://github.com/tozd/docker-ubuntu-systemd/>
+- <i class="fa fa-fw fa-laptop"></i> technology: *ubuntu*, *systemd*
+- <i class="fa fa-fw fa-database"></i> docker hub: <https://hub.docker.com/r/tozd/ubuntu-systemd/>
 
 
 Usage
